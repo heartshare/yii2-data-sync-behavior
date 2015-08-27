@@ -1,0 +1,25 @@
+{
+    "name": "yii2mod/yii2-data-sync-behavior",
+    "description": "Behavior for export data to local files from database tables. Changes are tracked using model events.",
+    "type": "yii2-extension",
+    "keywords": ["yii2", "extension"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitry Semenov",
+            "email": "disemx@gmail.com"
+        },
+        {
+            "name": "Igor Chepurnoy",
+            "email": "igorzfort@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": ">=2.0.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "yii2mod\\datasync\\": ""
+        }
+    }
+}
