@@ -54,6 +54,6 @@ public function behaviors()
 2. Execute command from console. For example:
 
    ```
-   php yii datasync - import data from all files stored files
+   php yii datasync - import data from all files
    php yii datasync/index 'app\models\UserModel' - import data only for `UserModel`
    ```
