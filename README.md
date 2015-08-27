@@ -38,5 +38,6 @@ public function behaviors()
 }
 
 ```
-#### After model events(EVENT_AFTER_UPDATE, EVENT_AFTER_INSERT, EVENT_AFTER_DELETE) behavior will be automatically create files by default path(@app/config/data) with data from this model. Files will be created in json format.
+* After model events(AFTER_UPDATE, AFTER_INSERT, AFTER_DELETE) behavior will be automatically create files in default path(@app/config/data) with data from this model. 
+* Files will be created in json format.
  
