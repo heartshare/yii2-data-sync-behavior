@@ -40,6 +40,13 @@ public function behaviors()
 ```
 * After model events(AFTER_UPDATE, AFTER_INSERT, AFTER_DELETE) behavior will be automatically create files in default path(@app/config/data) with data from this model. 
 * Files will be created in json format.
+* You can change default folder path for save files, by set param `dataSyncFolder` in main and console config.
+```php
+    //For example
+    'params' => [
+        'dataSyncFolder' => '@app/config/your-folder-name',
+    ],
+```
  
 ## Import changes
 
