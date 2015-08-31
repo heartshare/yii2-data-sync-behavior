@@ -45,7 +45,7 @@ class DataSyncBehavior extends Behavior
     public function init()
     {
         if (isset(Yii::$app->params['dataSyncFolder']) && $this->folderPath === null) {
-            $this->folderPath = Yii::$app->params['dataSyncFolder'];
+            $this->folderPath = Yii::getAlias(Yii::$app->params['dataSyncFolder']);
         } else {
             $this->folderPath = Yii::getAlias('@app/config/data');
         }
