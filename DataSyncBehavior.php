@@ -4,7 +4,6 @@ namespace yii2mod\datasync;
 
 use Yii;
 use yii\base\Behavior;
-use yii\base\Model;
 use yii\db\ActiveRecord;
 use yii\helpers\FileHelper;
 use yii\helpers\Inflector;
@@ -49,6 +48,8 @@ class DataSyncBehavior extends Behavior
         } else {
             $this->folderPath = Yii::getAlias('@app/config/data');
         }
+        
+        parent::init();
     }
 
     /**
@@ -58,13 +59,13 @@ class DataSyncBehavior extends Behavior
     public function dataSynchronization()
     {
         FileHelper::createDirectory($this->folderPath);
-        $exportData = $this->getExportData();
-        $fileName = $this->getFileName();
-        file_put_contents($fileName, $exportData);
+
+        file_put_contents($this->getFileName(), $this->getExportData());
     }
 
     /**
      * Return export data in json format
+     * 
      * @return string
      */
     protected function getExportData()
@@ -72,10 +73,10 @@ class DataSyncBehavior extends Behavior
         $model = $this->owner;
         $className = $model::className();
         $rows = $className::find()->asArray()->all();
+        
         return Json::htmlEncode([
             'meta' => [
                 'class' => $className,
-                'date' => Yii::$app->formatter->asDatetime(time()),
                 'columns' => array_keys($model->getAttributes())
             ],
             'data' => $rows
@@ -84,13 +85,14 @@ class DataSyncBehavior extends Behavior
 
     /**
      * Get file name with folder path
+     * 
      * @return string
      */
     protected function getFileName()
     {
-        /* @var $model Model */
         $model = $this->owner;
         $className = $model::className();
+        
         return $this->folderPath . DIRECTORY_SEPARATOR . Inflector::variablize($className) . "." . $this->fileExt;
     }
 }
